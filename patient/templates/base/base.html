@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="{% static 'css/boostrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">       
+<title>Database</title>
+</head>
+<body>
+    <header >
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <ul class="nav navbar-nav">
+                
+                {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'patient:home' %}">Hospital</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link add" href="{% url 'patient:addpatient' %}">Add patient</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link add" href="{% url 'patient:addreport' %}">Add report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link add" href="{% url 'patient:settings' %}">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link add" href="{% url 'patient:logout' %}">Log Out</a>
+                    </li>
+                {% endif %}                    
+            </ul>
+        </nav>
+    </header>
+    {% block  body%}
+    {% endblock body%}
+</body>
+</html>    

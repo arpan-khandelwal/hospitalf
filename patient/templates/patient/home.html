@@ -1,0 +1,23 @@
+{% extends '../base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}   
+    <div class="container">
+        <br>
+        <h1>All Patients</h1>
+        <div class="notes">
+            {% csrf_token %}
+            {% for person in notes %}
+            <div class="person">
+                <h2 class="text-info">{{person.name}}</h2>
+                <h6 class="text-info">{{person.admit_date}}</h6>
+                <div class="options">
+                    <a href="/update/{{person.id}}/" class="btn btn-success">Update</a>
+                    <a href="/delete/{{person.id}}/" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+                
+        </div>
+    </div>
+{% endblock body %}    
